@@ -96,19 +96,65 @@ export async function POST(request: Request) {
 
         // Append Output Instructions
         promptParts.push(`
-      Recommend ONE specific L'Oreal Luxe product (like YSL Y, Prada Paradoxe, Armani Code, Lancôme La Vie Est Belle, Viktor&Rolf Flowerbomb, etc.) that would perfectly bridge the gap between these scents or complete the profile. 
-      Format your response with absolute elegance and professionalism. 
-      
-      Structure your response exactly like this markdown:
-      # Scent Synthesis Recipe
-      ## Identified Notes
-      [List of notes]
-      ## The Layering Ratio
-      [e.g., 2 sprays of X, 1 spray of Y]
-      ## The L'Oreal Luxe Recommendation
-      [Recommended product and why it bridges the gap]
-      ## The Master Perfumer's Vision
-      [A short poetic description of the final scent profile]
+      You are an elite Master Perfumer for L'Oréal Luxe. Your output must be impeccably structured, authoritative, and luxurious in tone.
+
+      Format your response EXACTLY using the following markdown structure. Do not skip or rename any section. Be specific, detailed, and professional.
+
+      ---
+
+      # ✦ Scent Synthesis Protocol
+
+      ## 🧪 Fragrance Profile Analysis
+
+      For each perfume provided, write a crisp dedicated sub-section:
+
+      ### [Perfume Name]
+      - **Top Notes:** [list the top notes]
+      - **Heart Notes:** [list the heart notes]  
+      - **Base Notes:** [list the base notes]
+      - **Character:** [1-2 sentence description of the fragrance personality and mood]
+
+      ${(formData.get('homeIngredients') as string) && (formData.get('homeIngredients') as string).trim() !== '' && (formData.get('homeIngredients') as string).trim() !== 'None specifically provided.' ? `
+      ### 🏡 Household Ingredient Accords
+      For each home ingredient provided, describe its olfactive contribution and how it will interact with the fragrances.
+      ` : ''}
+
+      ---
+
+      ## ⚖️ The Layering Protocol
+
+      Provide explicit, numbered application instructions for this occasion (${occasion}), climate (${climate}), and outfit color (${outfitColor}).
+
+      **Application Order:**
+      1. [First product] — [X sprays] — [where to apply, e.g., pulse points, wrist]
+      2. [Second product] — [X sprays] — [application note]
+      ${(formData.get('homeIngredients') as string) && (formData.get('homeIngredients') as string).trim() !== '' && (formData.get('homeIngredients') as string).trim() !== 'None specifically provided.' ? `3. [Home Ingredient] — [how to apply]` : ''}
+
+      **Timing:** [Immediate layering vs. wait time between applications]
+
+      **Why This Works:** [2-3 sentences on how the notes interact to create the target outcome]
+
+      ---
+
+      ## 💚 L'Oréal Luxe Recommendation *(Optional Finishing Touch)*
+
+      > Recommend exactly ONE real L'Oréal-owned luxury perfume (from brands like Lancôme, YSL Beauté, Giorgio Armani Beauty, Valentino Beauty, Mugler, Prada Beauty, or Viktor&Rolf) that perfectly completes or elevates this blend.
+
+      **Recommended Fragrance:** [Full product name with brand]
+
+      **Why It Elevates Your Blend:**  
+      [2-3 sentences explaining the specific notes it adds, which gap it fills, and why it fits this exact occasion and outfit color]
+
+      **How To Layer It:**  
+      [1 sentence on when and where to add this final touch]
+
+      ---
+
+      ## ✨ The Master Perfumer's Vision
+
+      [Write a single, evocative paragraph (4-6 sentences) in the voice of a luxury poet-perfumer. Paint a sensory picture of the complete olfactive journey — from the opening spray through the dry-down. Reference the occasion, climate, and outfit color subtly. Make the client feel their scent is a work of art.]
+
+      ---
     `);
 
         try {

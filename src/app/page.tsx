@@ -103,6 +103,27 @@ export default function Home() {
   return (
     <main className="flex-grow flex flex-col min-h-screen relative w-full overflow-x-hidden">
 
+      {/* Sticky CTA Bar - visible only on hero phase while scrolling */}
+      {phase === "hero" && (
+        <div className="fixed bottom-6 left-0 right-0 z-50 flex justify-center px-4 pointer-events-none">
+          <motion.div
+            initial={{ y: 80, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 2, duration: 0.6, ease: "easeOut" }}
+            className="pointer-events-auto"
+          >
+            <button
+              onClick={getStarted}
+              className="bg-primary hover:bg-primary/95 text-white font-bold uppercase tracking-[0.2em] py-4 px-10 rounded-full transition-all duration-300 shadow-[0_8px_32px_rgba(16,185,129,0.45)] hover:shadow-[0_12px_40px_rgba(16,185,129,0.6)] hover:-translate-y-0.5 flex items-center space-x-3 backdrop-blur-md border border-primary/40 text-sm md:text-base"
+            >
+              <Sparkles size={16} />
+              <span>Begin Synthesis</span>
+              <Sparkles size={16} />
+            </button>
+          </motion.div>
+        </div>
+      )}
+
       {/* Hero Section */}
       <section className="w-full min-h-[90vh] flex flex-col items-center justify-center text-center px-4 relative z-10 pt-20">
         <motion.div
@@ -408,12 +429,19 @@ export default function Home() {
                     </h2>
                   </div>
 
-                  <div className="prose prose-sm md:prose-base max-w-none 
-                    prose-p:text-zinc-300 prose-p:leading-relaxed 
+                  <div className="prose prose-sm md:prose-base max-w-none
+                    prose-p:text-zinc-300 prose-p:leading-relaxed
                     prose-headings:text-white prose-headings:font-heading prose-headings:font-medium
+                    prose-h1:text-2xl prose-h1:text-primary prose-h1:border-b prose-h1:border-primary/30 prose-h1:pb-3 prose-h1:mb-6
+                    prose-h2:text-lg prose-h2:text-emerald-400 prose-h2:uppercase prose-h2:tracking-widest prose-h2:font-bold prose-h2:mt-8
+                    prose-h3:text-base prose-h3:text-white prose-h3:font-bold
                     prose-strong:text-primary prose-strong:font-semibold
                     prose-ul:text-zinc-300 prose-li:marker:text-primary
-                    prose-a:text-primary p-6 bg-zinc-900/50 rounded-xl border border-zinc-800">
+                    prose-ol:text-zinc-300 prose-ol:list-decimal
+                    prose-blockquote:border-l-primary prose-blockquote:text-zinc-400 prose-blockquote:italic
+                    prose-a:text-primary prose-hr:border-zinc-800
+                    [&>*:first-child]:mt-0"
+                  >
                     <ReactMarkdown>{recipe}</ReactMarkdown>
                   </div>
 
