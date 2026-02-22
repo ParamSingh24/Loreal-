@@ -21,9 +21,9 @@ export default function RootLayout({
       <body className={`${inter.variable} ${playfair.variable} font-sans bg-black text-white antialiased min-h-screen relative`}>
         <div className="fixed inset-0 z-0 pointer-events-none">
           <Grainient
-            color1="#C8A165"
-            color2="#000000"
-            color3="#111111"
+            color1="#10B981" // Vibrant Emerald Green 
+            color2="#000000" // Pure Black
+            color3="#047857" // Rich Dark Green
             timeSpeed={0.15}
             warpStrength={0.5}
             warpFrequency={3}

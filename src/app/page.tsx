@@ -94,7 +94,7 @@ export default function Home() {
     out: { opacity: 0, y: -20 },
   };
 
-  const pageTransition = {
+  const pageTransition: any = {
     type: "tween",
     ease: "anticipate",
     duration: 0.8,
@@ -106,65 +106,89 @@ export default function Home() {
       {/* Hero Section */}
       <section className="w-full min-h-[90vh] flex flex-col items-center justify-center text-center px-4 relative z-10 pt-20">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: "easeOut" }}
-          className="max-w-4xl mx-auto space-y-8"
+          transition={{ duration: 1.2, ease: "easeOut" }}
+          className="max-w-4xl mx-auto space-y-10"
         >
-          <div className="inline-block px-4 py-1.5 rounded-full border border-primary/30 bg-primary/5 text-primary text-xs uppercase tracking-[0.3em] backdrop-blur-sm mb-4">
+          <div className="inline-block px-5 py-2 rounded-full border border-primary/40 bg-zinc-950/60 text-primary text-xs md:text-sm font-semibold uppercase tracking-[0.3em] backdrop-blur-md shadow-sm mb-4">
             L'Oréal Luxe Olfactory Engine
           </div>
-          <h1 className="font-heading text-5xl md:text-7xl lg:text-8xl text-primary font-medium tracking-wide drop-shadow-sm">
+          <h1 className="font-heading text-6xl md:text-8xl lg:text-9xl text-white font-medium tracking-wide drop-shadow-sm">
             Synthesize
           </h1>
-          <p className="font-sans text-foreground/80 text-lg md:text-xl font-light max-w-2xl mx-auto leading-relaxed">
+          <p className="font-sans text-zinc-300 text-lg md:text-2xl font-light max-w-3xl mx-auto leading-relaxed">
             Elevate your personal fragrance wardrobe. Our Master Perfumer AI analyzes your collection to architect the perfect layering protocol for any occasion.
           </p>
 
-          <div className="pt-8">
+          <div className="pt-10">
             <button
               onClick={getStarted}
-              className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold uppercase tracking-widest py-4 px-10 rounded-sm transition-all duration-300 shadow-[0_4px_20px_rgba(200,161,101,0.2)] hover:shadow-[0_4px_30px_rgba(200,161,101,0.4)] flex items-center justify-center space-x-3 mx-auto"
+              className="bg-primary hover:bg-primary/90 text-white font-bold uppercase tracking-[0.2em] py-5 px-12 rounded-lg transition-all duration-300 shadow-[0_10px_30px_rgba(16,185,129,0.3)] hover:shadow-[0_15px_40px_rgba(16,185,129,0.5)] hover:-translate-y-1 flex items-center justify-center space-x-4 mx-auto"
             >
               <span>Begin Synthesis</span>
-              <Sparkles size={18} />
+              <Sparkles size={20} />
             </button>
           </div>
         </motion.div>
       </section>
 
       {/* How it Works Section */}
-      <section className="w-full bg-background/50 backdrop-blur-xl border-y border-primary/10 py-20 relative z-10">
+      <section className="w-full bg-black/60 backdrop-blur-xl border-y border-zinc-800 py-24 relative z-10 shadow-sm overflow-hidden">
         <div className="container mx-auto px-4 max-w-5xl">
-          <div className="text-center mb-16">
-            <h2 className="font-heading text-3xl md:text-4xl text-foreground">The Protocol</h2>
-            <div className="h-px w-24 bg-primary mx-auto mt-6"></div>
-          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-20"
+          >
+            <h2 className="font-heading text-4xl md:text-5xl text-white font-medium">The Protocol</h2>
+            <div className="h-0.5 w-24 bg-primary mx-auto mt-8 opacity-70"></div>
+          </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
-            <div className="space-y-4">
-              <div className="w-16 h-16 mx-auto rounded-full bg-primary/10 flex items-center justify-center text-primary text-2xl font-heading">1</div>
-              <h3 className="font-bold text-lg text-foreground uppercase tracking-widest">Inventory</h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">Submit your current fragrances either via a quick photograph or by typing out your collection.</p>
-            </div>
-            <div className="space-y-4">
-              <div className="w-16 h-16 mx-auto rounded-full bg-primary/10 flex items-center justify-center text-primary text-2xl font-heading">2</div>
-              <h3 className="font-bold text-lg text-foreground uppercase tracking-widest">Context</h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">Provide the canvas. Tell us the climate, occasion, and your dominant outfit color.</p>
-            </div>
-            <div className="space-y-4">
-              <div className="w-16 h-16 mx-auto rounded-full bg-primary/10 flex items-center justify-center text-primary text-2xl font-heading">3</div>
-              <h3 className="font-bold text-lg text-foreground uppercase tracking-widest">Synthesis</h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">Receive a bespoke Master Perfumer layering recipe and a L'Oréal product recommendation.</p>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-16 text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="space-y-6"
+            >
+              <div className="w-20 h-20 mx-auto rounded-full bg-primary/10 flex items-center justify-center text-primary text-3xl font-heading shadow-[0_0_20px_rgba(16,185,129,0.15)] border border-primary/30">1</div>
+              <h3 className="font-bold text-xl text-white uppercase tracking-widest">Inventory</h3>
+              <p className="text-zinc-300 text-base leading-relaxed max-w-xs mx-auto">Submit your current fragrances via a quick photograph or by typing out your collection.</p>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="space-y-6"
+            >
+              <div className="w-20 h-20 mx-auto rounded-full bg-primary/10 flex items-center justify-center text-primary text-3xl font-heading shadow-[0_0_20px_rgba(16,185,129,0.15)] border border-primary/30">2</div>
+              <h3 className="font-bold text-xl text-white uppercase tracking-widest">Context</h3>
+              <p className="text-zinc-300 text-base leading-relaxed max-w-xs mx-auto">Provide the canvas. Tell us the climate, occasion, and your dominant outfit color.</p>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              className="space-y-6"
+            >
+              <div className="w-20 h-20 mx-auto rounded-full bg-primary/10 flex items-center justify-center text-primary text-3xl font-heading shadow-[0_0_20px_rgba(16,185,129,0.15)] border border-primary/30">3</div>
+              <h3 className="font-bold text-xl text-white uppercase tracking-widest">Synthesis</h3>
+              <p className="text-zinc-300 text-base leading-relaxed max-w-xs mx-auto">Receive a bespoke Master Perfumer layering recipe and a L'Oréal product recommendation.</p>
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* Main App Section */}
-      <section ref={synthesisRef} className="w-full py-24 px-4 flex justify-center relative z-10 min-h-[80vh]">
-        {phase !== "hero" && (
-          <div className="w-full max-w-2xl bg-card/80 border border-primary/20 backdrop-blur-2xl rounded-2xl p-8 md:p-12 shadow-[0_20px_50px_rgba(0,0,0,0.05)]">
+      {phase !== "hero" && (
+        <section ref={synthesisRef} className="w-full py-24 px-4 flex justify-center relative z-10 min-h-[80vh]">
+          <div className="w-full max-w-2xl bg-zinc-950/80 border border-zinc-800 backdrop-blur-3xl rounded-3xl p-8 md:p-14 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.8)]">
             <AnimatePresence mode="wait">
               {/* Phase 1: Inventory */}
               {phase === "inventory" && (
@@ -178,24 +202,24 @@ export default function Home() {
                   className="flex flex-col items-center space-y-8"
                 >
                   <div className="text-center space-y-3">
-                    <h2 className="font-heading text-2xl md:text-3xl text-foreground">Your Fragrance Wardrobe</h2>
-                    <p className="text-muted-foreground text-sm font-light">
+                    <h2 className="font-heading text-2xl md:text-3xl text-white">Your Fragrance Wardrobe</h2>
+                    <p className="text-zinc-400 text-sm font-light">
                       How would you like to provide your current inventory?
                     </p>
                   </div>
 
                   {/* Segmented Control */}
-                  <div className="flex p-1 bg-muted rounded-lg w-full max-w-md">
+                  <div className="flex p-1 bg-zinc-900 rounded-lg w-full max-w-md border border-zinc-800">
                     <button
                       onClick={() => setEntryMode("upload")}
-                      className={`flex-1 py-2 text-sm font-semibold uppercase tracking-wider rounded-md transition-all flex items-center justify-center space-x-2 ${entryMode === 'upload' ? 'bg-card text-primary shadow-sm' : 'text-muted-foreground hover:text-foreground'}`}
+                      className={`flex-1 py-2 text-sm font-semibold uppercase tracking-wider rounded-md transition-all flex items-center justify-center space-x-2 ${entryMode === 'upload' ? 'bg-zinc-800 text-primary shadow-sm' : 'text-zinc-500 hover:text-white'}`}
                     >
                       <ImageIcon size={16} />
                       <span>Upload Image</span>
                     </button>
                     <button
                       onClick={() => setEntryMode("manual")}
-                      className={`flex-1 py-2 text-sm font-semibold uppercase tracking-wider rounded-md transition-all flex items-center justify-center space-x-2 ${entryMode === 'manual' ? 'bg-card text-primary shadow-sm' : 'text-muted-foreground hover:text-foreground'}`}
+                      className={`flex-1 py-2 text-sm font-semibold uppercase tracking-wider rounded-md transition-all flex items-center justify-center space-x-2 ${entryMode === 'manual' ? 'bg-zinc-800 text-primary shadow-sm' : 'text-zinc-500 hover:text-white'}`}
                     >
                       <PenTool size={16} />
                       <span>Manual Entry</span>
@@ -206,7 +230,7 @@ export default function Home() {
                     <div
                       {...getRootProps()}
                       className={`w-full p-10 border-2 border-dashed rounded-xl cursor-pointer transition-all duration-300 flex flex-col items-center justify-center space-y-4
-                        ${isDragActive ? "border-primary bg-primary/5" : "border-primary/20 bg-background/50 hover:border-primary/50 hover:bg-background"}
+                        ${isDragActive ? "border-primary bg-primary/10" : "border-primary/30 bg-black/40 hover:border-primary/60 hover:bg-black/80"}
                       `}
                     >
                       <input {...getInputProps()} />
@@ -216,10 +240,10 @@ export default function Home() {
                       {images.length > 0 ? (
                         <div className="text-center">
                           <p className="text-primary font-medium">{images.length} file(s) selected.</p>
-                          <p className="text-xs text-muted-foreground mt-2 truncate max-w-xs">{images[0].name}</p>
+                          <p className="text-xs text-zinc-400 mt-2 truncate max-w-xs">{images[0].name}</p>
                         </div>
                       ) : (
-                        <p className="text-muted-foreground text-center">
+                        <p className="text-zinc-400 text-center">
                           Drag & drop an image here, or <span className="text-primary font-medium hover:underline">click to select</span>
                         </p>
                       )}
@@ -227,24 +251,26 @@ export default function Home() {
                   ) : (
                     <div className="w-full space-y-6">
                       <div className="space-y-2">
-                        <label className="text-xs text-foreground uppercase tracking-widest font-semibold">Which perfumes do you currently own?</label>
+                        <label className="text-xs text-zinc-300 uppercase tracking-widest font-semibold flex items-center justify-between">
+                          <span>Which perfumes do you currently own?</span>
+                        </label>
                         <textarea
                           placeholder="e.g. YSL Libre, Dior Sauvage, Tom Ford Black Orchid..."
                           value={manualPerfumes}
                           onChange={(e) => setManualPerfumes(e.target.value)}
-                          className="w-full bg-background border border-primary/20 text-foreground rounded-md p-4 min-h-[100px] focus:outline-none focus:border-primary transition-colors focus:ring-1 focus:ring-primary placeholder:text-muted-foreground/50"
+                          className="w-full bg-black/50 border border-zinc-800 text-white rounded-md p-4 min-h-[100px] focus:outline-none focus:border-primary transition-colors focus:ring-1 focus:ring-primary placeholder:text-zinc-600"
                         />
                       </div>
                       <div className="space-y-2">
-                        <label className="text-xs text-foreground uppercase tracking-widest font-semibold flex items-center">
+                        <label className="text-xs text-zinc-300 uppercase tracking-widest font-semibold flex items-center">
                           Bonus Ingredients
-                          <span className="ml-2 text-[10px] text-muted-foreground lowercase tracking-normal font-normal bg-muted px-2 py-0.5 rounded-full">(Optional)</span>
+                          <span className="ml-2 text-[10px] text-zinc-500 lowercase tracking-normal font-normal bg-zinc-900 px-2 py-0.5 rounded-full border border-zinc-800">(Optional)</span>
                         </label>
                         <textarea
                           placeholder="What do you have at home to make a perfume list? (e.g. Essential oils, vanilla extract, rose water...)"
                           value={homeIngredients}
                           onChange={(e) => setHomeIngredients(e.target.value)}
-                          className="w-full bg-background border border-primary/20 text-foreground rounded-md p-4 min-h-[80px] focus:outline-none focus:border-primary transition-colors focus:ring-1 focus:ring-primary placeholder:text-muted-foreground/50"
+                          className="w-full bg-black/50 border border-zinc-800 text-white rounded-md p-4 min-h-[80px] focus:outline-none focus:border-primary transition-colors focus:ring-1 focus:ring-primary placeholder:text-zinc-600"
                         />
                       </div>
                     </div>
@@ -253,7 +279,7 @@ export default function Home() {
                   <button
                     onClick={() => setPhase("context")}
                     disabled={entryMode === "upload" ? images.length === 0 : manualPerfumes.trim().length === 0}
-                    className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold uppercase tracking-wider py-4 px-6 rounded-md transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2 shadow-[0_4px_15px_rgba(200,161,101,0.2)]"
+                    className="w-full bg-primary hover:bg-primary/90 text-white font-bold uppercase tracking-wider py-4 px-6 rounded-md transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2 shadow-[0_10px_20px_rgba(16,185,129,0.2)]"
                   >
                     <span>Continue to Context</span>
                     <ArrowRight size={18} />
@@ -273,75 +299,75 @@ export default function Home() {
                   className="flex flex-col space-y-8"
                 >
                   <div className="text-center space-y-3">
-                    <h2 className="font-heading text-2xl md:text-3xl text-foreground">The Canvas</h2>
-                    <p className="text-muted-foreground text-sm font-light">
+                    <h2 className="font-heading text-2xl md:text-3xl text-white">The Canvas</h2>
+                    <p className="text-zinc-400 text-sm font-light">
                       Provide context to architect your perfect layering protocol.
                     </p>
                   </div>
 
                   {error && (
-                    <div className="bg-destructive/10 text-destructive border border-destructive/20 p-4 rounded-md text-sm text-center">
-                      <p className="font-semibold mb-1">Configuration Error</p>
+                    <div className="bg-destructive/10 text-destructive border border-destructive/20 p-4 rounded-lg text-sm text-center shadow-sm">
+                      <p className="font-bold mb-1">Configuration Error</p>
                       <p>{error}</p>
                     </div>
                   )}
 
-                  <div className="space-y-6">
-                    <div className="space-y-2">
-                      <label className="text-sm text-foreground uppercase tracking-widest font-semibold">Occasion</label>
+                  <div className="space-y-8">
+                    <div className="space-y-3">
+                      <label className="text-sm text-white uppercase tracking-widest font-bold">Occasion</label>
                       <select
                         value={occasion}
                         onChange={(e) => setOccasion(e.target.value)}
-                        className="w-full bg-background border border-primary/20 text-foreground rounded-md p-3 focus:outline-none focus:border-primary transition-colors focus:ring-1 focus:ring-primary appearance-none"
+                        className="w-full bg-black/50 border border-zinc-800 text-white rounded-lg p-4 font-medium focus:outline-none focus:border-primary transition-colors focus:ring-2 focus:ring-primary/20 appearance-none cursor-pointer"
                       >
-                        <option value="" disabled>Select Occasion</option>
-                        <option value="Black Tie Event">Black Tie Event</option>
-                        <option value="Intimate Dinner">Intimate Dinner</option>
-                        <option value="Boardroom Meeting">Boardroom Meeting</option>
-                        <option value="Weekend Escape">Weekend Escape</option>
-                        <option value="Everyday Signature">Everyday Signature</option>
+                        <option value="" disabled className="text-zinc-500">Select Occasion</option>
+                        <option value="Black Tie Event" className="text-slate-900">Black Tie Event</option>
+                        <option value="Intimate Dinner" className="text-slate-900">Intimate Dinner</option>
+                        <option value="Boardroom Meeting" className="text-slate-900">Boardroom Meeting</option>
+                        <option value="Weekend Escape" className="text-slate-900">Weekend Escape</option>
+                        <option value="Everyday Signature" className="text-slate-900">Everyday Signature</option>
                       </select>
                     </div>
 
-                    <div className="space-y-2">
-                      <label className="text-sm text-foreground uppercase tracking-widest font-semibold">Climate</label>
+                    <div className="space-y-3">
+                      <label className="text-sm text-white uppercase tracking-widest font-bold">Climate</label>
                       <select
                         value={climate}
                         onChange={(e) => setClimate(e.target.value)}
-                        className="w-full bg-background border border-primary/20 text-foreground rounded-md p-3 focus:outline-none focus:border-primary transition-colors focus:ring-1 focus:ring-primary appearance-none"
+                        className="w-full bg-black/50 border border-zinc-800 text-white rounded-lg p-4 font-medium focus:outline-none focus:border-primary transition-colors focus:ring-2 focus:ring-primary/20 appearance-none cursor-pointer"
                       >
-                        <option value="" disabled>Select Climate</option>
-                        <option value="Crisp Autumn">Crisp Autumn</option>
-                        <option value="Harsh Winter">Harsh Winter</option>
-                        <option value="Humid Summer">Humid Summer</option>
-                        <option value="Mild Spring">Mild Spring</option>
+                        <option value="" disabled className="text-zinc-500">Select Climate</option>
+                        <option value="Crisp Autumn" className="text-slate-900">Crisp Autumn</option>
+                        <option value="Harsh Winter" className="text-slate-900">Harsh Winter</option>
+                        <option value="Humid Summer" className="text-slate-900">Humid Summer</option>
+                        <option value="Mild Spring" className="text-slate-900">Mild Spring</option>
                       </select>
                     </div>
 
-                    <div className="space-y-2">
-                      <label className="text-sm text-foreground uppercase tracking-widest font-semibold">Dominant Outfit Color</label>
+                    <div className="space-y-3">
+                      <label className="text-sm text-white uppercase tracking-widest font-bold">Dominant Outfit Color</label>
                       <input
                         type="text"
                         placeholder="e.g., Midnight Blue, Emerald, Crimson..."
                         value={outfitColor}
                         onChange={(e) => setOutfitColor(e.target.value)}
-                        className="w-full bg-background border border-primary/20 text-foreground rounded-md p-3 focus:outline-none focus:border-primary transition-colors focus:ring-1 focus:ring-primary placeholder:text-muted-foreground/50"
+                        className="w-full bg-black/50 border border-zinc-800 text-white rounded-lg p-4 font-medium focus:outline-none focus:border-primary transition-colors focus:ring-2 focus:ring-primary/20 placeholder:text-zinc-600"
                       />
                     </div>
                   </div>
 
-                  <div className="flex space-x-4">
+                  <div className="flex space-x-6 pt-4">
                     <button
                       onClick={() => setPhase("inventory")}
-                      className="w-1/3 border border-border text-foreground hover:bg-muted font-medium uppercase tracking-wider py-4 px-6 rounded-md transition-all text-sm"
+                      className="w-1/3 border-2 border-zinc-800 text-zinc-300 hover:bg-zinc-900 hover:text-white font-bold uppercase tracking-wider py-4 px-6 rounded-lg transition-all text-sm"
                     >
                       Back
                     </button>
                     <button
                       onClick={handleSynthesize}
-                      className="w-2/3 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold uppercase tracking-wider py-4 px-6 rounded-md transition-all flex items-center justify-center space-x-2 shadow-[0_4px_15px_rgba(200,161,101,0.2)]"
+                      className="w-2/3 bg-primary hover:bg-primary/90 text-white font-bold uppercase tracking-widest py-4 px-6 rounded-lg transition-all flex items-center justify-center space-x-3 shadow-[0_10px_25px_rgba(16,185,129,0.25)] hover:shadow-[0_15px_35px_rgba(16,185,129,0.4)]"
                     >
-                      <Sparkles size={18} />
+                      <Sparkles size={20} />
                       <span>Synthesize</span>
                     </button>
                   </div>
@@ -374,30 +400,30 @@ export default function Home() {
                   className="flex flex-col space-y-10"
                 >
                   <div className="text-center space-y-4">
-                    <div className="inline-flex items-center justify-center p-3 rounded-full bg-primary/10 text-primary mb-2 shadow-inner">
+                    <div className="inline-flex items-center justify-center p-3 rounded-full bg-primary/10 text-primary mb-2 shadow-inner border border-primary/20">
                       <Droplets size={28} />
                     </div>
-                    <h2 className="font-heading text-3xl md:text-4xl text-foreground tracking-tight">
+                    <h2 className="font-heading text-3xl md:text-4xl text-white tracking-tight">
                       Your Signature Blend
                     </h2>
                   </div>
 
                   <div className="prose prose-sm md:prose-base max-w-none 
-                    prose-p:text-muted-foreground prose-p:leading-relaxed 
-                    prose-headings:text-foreground prose-headings:font-heading prose-headings:font-medium
+                    prose-p:text-zinc-300 prose-p:leading-relaxed 
+                    prose-headings:text-white prose-headings:font-heading prose-headings:font-medium
                     prose-strong:text-primary prose-strong:font-semibold
-                    prose-ul:text-muted-foreground prose-li:marker:text-primary
-                    prose-a:text-primary">
+                    prose-ul:text-zinc-300 prose-li:marker:text-primary
+                    prose-a:text-primary p-6 bg-zinc-900/50 rounded-xl border border-zinc-800">
                     <ReactMarkdown>{recipe}</ReactMarkdown>
                   </div>
 
-                  <div className="border-t border-border pt-8 flex flex-col space-y-6">
-                    <div className="bg-muted p-6 rounded-lg text-center border border-border/50">
+                  <div className="border-t border-zinc-800 pt-8 flex flex-col space-y-6">
+                    <div className="bg-zinc-900 p-6 rounded-lg text-center border border-zinc-800 shadow-inner">
                       <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary mb-3">Beauty Tech Initiative</p>
-                      <p className="text-sm text-foreground/80 leading-relaxed">
+                      <p className="text-sm text-zinc-400 leading-relaxed">
                         By maximizing your current inventory, Synthesize reduces fragrance waste by 30%.
                         <br /><br />
-                        <em className="text-foreground font-medium italic">Protecting the integrity of luxury ingredients that dupes cannot replicate.</em>
+                        <em className="text-zinc-300 font-medium italic">Protecting the integrity of luxury ingredients that dupes cannot replicate.</em>
                       </p>
                     </div>
 
@@ -408,7 +434,7 @@ export default function Home() {
                         setHomeIngredients("");
                         setPhase("inventory");
                       }}
-                      className="w-full border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground font-semibold uppercase tracking-widest py-4 px-6 rounded-md transition-all duration-300"
+                      className="w-full border-2 border-primary text-primary hover:bg-primary hover:text-white font-semibold uppercase tracking-widest py-4 px-6 rounded-md transition-all duration-300 hover:shadow-[0_0_20px_rgba(16,185,129,0.3)]"
                     >
                       Synthesize Again
                     </button>
@@ -417,13 +443,13 @@ export default function Home() {
               )}
             </AnimatePresence>
           </div>
-        )}
-      </section>
+        </section>
+      )}
 
       {/* Footer */}
-      <footer className="w-full bg-background border-t border-border py-8 text-center relative z-10 mt-auto">
+      <footer className="w-full bg-black border-t border-zinc-900 py-8 text-center relative z-10 mt-auto">
         <p className="font-heading text-xl text-primary mb-2 tracking-wider">Synthesize</p>
-        <p className="text-xs text-muted-foreground uppercase tracking-widest font-light">
+        <p className="text-xs text-zinc-500 uppercase tracking-widest font-light">
           L'Oréal Luxe Olfactory Engine &copy; {new Date().getFullYear()}
         </p>
       </footer>
